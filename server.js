@@ -26,7 +26,7 @@ app.get('/date', (req, res) => {
     res.send(myDateTime())
 })
 app.get('/geturl', (req, res) => {
-    res.send(getURL.getPath(req))
+    res.send(getURL.getPath(req) + '<br>' + getURL.getParamsURL(req))
 })
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)
