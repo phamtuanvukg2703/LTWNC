@@ -1,6 +1,9 @@
+import { configDotenv } from 'dotenv';
 import http from 'http';
 import myDateTime from './date';
 import { getPath, getParamsURL } from './getURL';
+import path from 'path';
+
 http.createServer(function (req, res) {
     res.writeHead(200, { 'Content-Type': 'text/html;charset=utf-8' });
     res.write(myDateTime() + "<br>");
