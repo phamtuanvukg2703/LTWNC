@@ -10,6 +10,7 @@ const initWebRoute = (app) => {
     router.get('/contact', contactPage)
     router.get('/user', UserController.getAllUser)
     router.get('/user/create', UserController.createUser)
+    router.get('/user/:username', UserController.detailUser);
     return app.use('/', router)
 }
 export default initWebRoute

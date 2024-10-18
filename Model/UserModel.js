@@ -6,4 +6,8 @@ const getAllUser = async () => {
 const createNewUser = () => {
 
 }
-export default { getAllUser, createNewUser }
+const detailUser = async (user) => {
+    const [rows, fields] = await pool.execute("SELECT * FROM `users` WHERE username=?", [user])
+    return rows[0]
+}
+export default { getAllUser, createNewUser, detailUser }

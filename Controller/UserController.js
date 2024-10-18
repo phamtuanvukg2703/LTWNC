@@ -17,4 +17,17 @@ const createUser = (req, res) => {
         }
     )
 }
-export default { getAllUser, createUser }
+const detailUser = async (req, res) => {
+    // if (isAuthentication(req, res) == true) {
+    var user = req.params.username
+    var dataUser = await UserModel.detailUser(user)
+    res.render('home',
+        {
+            title: "Detail User",
+            page: "detailUser",
+            rows: dataUser
+        }
+    )
+    // }
+}
+export default { getAllUser, createUser, detailUser }
