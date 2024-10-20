@@ -1,4 +1,6 @@
 import UserModel from "../Model/UserModel";
+
+
 const getAllUser = async (req, res) => {
     var userList = await UserModel.getAllUser()
     res.render('home',
@@ -9,13 +11,21 @@ const getAllUser = async (req, res) => {
         }
     )
 }
-const createUser = (req, res) => {
-    res.render('home',
-        {
-            title: "Create New User",
-            page: "createNewUser"
-        }
-    )
+const createUser = async (req, res) => {
+    if (req.method === "GET") {
+        res.render('home',
+            {
+                title: "Create New User",
+                page: "createNewUser"
+            }
+        )
+    }
+    if (req.method === "POST") {
+        const data = req.body
+        const result = await UserModel.createNewUser(data);
+        console.log(result);
+        res.redirect("/user");
+    }
 }
 const detailUser = async (req, res) => {
     // if (isAuthentication(req, res) == true) {
