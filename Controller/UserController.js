@@ -40,4 +40,12 @@ const detailUser = async (req, res) => {
     )
     // }
 }
-export default { getAllUser, createUser, detailUser }
+const deleteUser = async (req, res) => {
+    if (req.method === "POST") {
+        const username = req.body.username;
+        const result = await UserModel.deleteUser(username);
+        console.log(result);
+        res.redirect("/user");
+    }
+};
+export default { getAllUser, createUser, detailUser, deleteUser }

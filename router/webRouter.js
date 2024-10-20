@@ -12,6 +12,7 @@ const initWebRoute = (app) => {
     router.get('/user/create', UserController.createUser)
     router.post('/user/create', UserController.createUser)
     router.get('/user/:username', UserController.detailUser)
+    router.post("/user/delete", UserController.deleteUser);
     return app.use('/', router)
 }
 export default initWebRoute

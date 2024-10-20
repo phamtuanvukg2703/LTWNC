@@ -2,7 +2,7 @@ import express from "express";
 import dotenv from 'dotenv/config'
 import path from 'path';
 import { configDotenv } from "dotenv";
-import myDateTime from "./date";
+import myDateTime from "./views/date";
 import getURL from "./getURL";
 import viewEngine from "./viewEngine";
 import initWebRoute from "./router/webRouter";
