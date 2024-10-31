@@ -1,0 +1,22 @@
+<div class="container">
+    <h1>Update User</h1>
+    <form action="/user/update/<%= rows.username %>" method="POST">
+        <br>
+        <label for="fullname">Fullname:</label>
+        <input type="text" id="fullname" name="fullname" value="<%=rows.fullname %>">
+        <br>
+        <label for="address">Address:</label>
+        <input type="text" id="address" name="address" value="<%= rows.address %>">
+        <div>
+            <label for="sex" class="form-label">Sex</label>
+            <select class="form-control" id="sex" name="sex" required>
+                <option value="nam" <%=rows.sex==="nam" ? 'selected' : '' %>>Nam</option>
+                <option value="nu" <%=rows.sex==="nu" ? 'selected' : '' %>>Nữ</option>
+            </select>
+        </div>
+        <label for="email">email:</label>
+        <input type="email" id="email" name="email" value="<%= rows.email %>">
+        <input type="text" id="username" name="username" value="<%= rows.username %>" hidden>
+        <button type="submit">Sửa</button>
+    </form>
+</div>

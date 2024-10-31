@@ -18,5 +18,11 @@ const detailUser = async (user) => {
 function deleteUser(username) {
     return pool.execute("DELETE FROM `users` WHERE username = ?", [username])
 }
-
-export default { getAllUser, createNewUser, detailUser, deleteUser }
+const updateUser = async ({ fullname, address, sex, email, username }) => {
+    const [result] = await pool.execute(
+        "UPDATE `users` SET fullname = ?, address = ?, sex = ?, email = ? WHERE username = ?",
+        [fullname, address, sex, email, username]
+    );
+    return result;
+};
+export default { getAllUser, createNewUser, detailUser, deleteUser, updateUser }
