@@ -20,6 +20,11 @@
                 </li>
 
         </div>
-        <a class="d-flex nav-link active" aria-current="page" href="login">Đăng nhập</a>
+        <% if (session.user) { %>
+            <span class="mr-10">Wecome,<%= session.user.fullname %></span>
+            <a type="button" class="btn btn-primary" href="logout">Logout</a>
+            <% } else { %>
+                <a class="d-flex nav-link active" aria-current="page" href="login">Đăng nhập</a>
+                <% } %>
     </div>
 </nav>

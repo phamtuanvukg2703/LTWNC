@@ -7,7 +7,8 @@ const getAllUser = async (req, res) => {
         {
             title: 'List User',
             page: 'listUser',
-            rows: userList
+            rows: userList,
+            session: req.session
         }
     )
 }

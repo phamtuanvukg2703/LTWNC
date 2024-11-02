@@ -6,7 +6,8 @@ const getLogin = (req, res) => {
     res.render('home',
         {
             title: 'Đăng nhập',
-            page: 'login'
+            page: 'login',
+            session: req.session
         }
     )
 }
@@ -20,7 +21,10 @@ const postLogin = async (req, res) => {
     if (user) {
         const isMatch = await bcrypt.compare(password, user.password);
         if (isMatch) {
-            req.session.user = user;
+            req.session.user = {
+                username: user.username,
+                fullname: user.fullname,
+            };
             res.redirect('/user');
             console.log(req.session.user)
         } else {
@@ -30,4 +34,12 @@ const postLogin = async (req, res) => {
         res.status(401).send('Người dùng không tồn tại');
     }
 };
-export default { getLogin, postLogin }
+const logout = (req, res) => {
+    req.session.destroy((err) => {
+        if (err) {
+            return res.status(500).send('Đã xảy ra lỗi trong quá trình đăng xuất');
+        }
+        res.redirect('/login');
+    });
+};
+export default { getLogin, postLogin, logout }

@@ -21,6 +21,7 @@ const initWebRoute = (app) => {
 
     router.get('/login', AuthController.getLogin);
     router.post('/login', AuthController.postLogin);
+    router.get('/logout', AuthController.logout);
 
     return app.use('/', router)
 }
