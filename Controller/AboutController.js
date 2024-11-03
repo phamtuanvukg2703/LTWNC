@@ -3,7 +3,6 @@ const aboutPage = (req, res) => {
         {
             title: 'about Website',
             page: 'about',
-            session: req.session
         }
     )
 }

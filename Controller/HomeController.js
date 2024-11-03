@@ -3,7 +3,6 @@ const getHomePage = (req, res) => {
         {
             title: 'Home website',
             page: 'main',
-            session: req.session
         }
     )
 }

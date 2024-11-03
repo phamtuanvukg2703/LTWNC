@@ -16,6 +16,11 @@ app.use(session({
     saveUninitialized: true,
     cookie: { secure: false }
 }));
+//gọi session vào tất cả trang home có header
+app.use((req, res, next) => {
+    res.locals.session = req.session;
+    next();
+});
 const port = process.env.PORT;
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())

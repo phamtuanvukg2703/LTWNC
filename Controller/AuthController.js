@@ -24,9 +24,9 @@ const postLogin = async (req, res) => {
             req.session.user = {
                 username: user.username,
                 fullname: user.fullname,
+                role: user.role
             };
-            res.redirect('/user');
-            console.log(req.session.user)
+            res.redirect('/');
         } else {
             res.status(401).send('Sai mật khẩu');
         }

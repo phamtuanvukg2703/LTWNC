@@ -8,7 +8,6 @@ const getAllUser = async (req, res) => {
             title: 'List User',
             page: 'listUser',
             rows: userList,
-            session: req.session
         }
     )
 }
@@ -62,7 +61,7 @@ const updateUser = async (req, res) => {
         const { username, fullname, address, sex, email } = req.body;
         const result = await UserModel.updateUser({ fullname, address, sex, email, username });
         console.log(result);
-        res.redirect("/user");
+        res.redirect("/");
     }
 };
 export default { getAllUser, createUser, detailUser, deleteUser, updateUser }

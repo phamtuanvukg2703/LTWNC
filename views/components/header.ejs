@@ -4,27 +4,38 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="about">About</a>
+                    <a class="nav-link active" aria-current="page" href="/about">About</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="ejs">test</a>
+                    <a class="nav-link active" aria-current="page" href="/ejs">test</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="date">Date</a>
+                    <a class="nav-link active" aria-current="page" href="/date">Date</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="contact">Contact</a>
+                    <a class="nav-link active" aria-current="page" href="/contact">Contact</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="user">Người dùng</a>
-                </li>
+                <% if (session && session.user) { %>
+                    <% if (session.user.role===1) { %>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="/user/<%= session.user.username %>">
+                                Thông tin cá nhân
+                            </a>
+                        </li>
+                        <% } else if (session.user.role===0) { %>
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="/user">Danh sách người dùng</a>
+                            </li>
+                            <% } %>
+                                <% } %>
+
 
         </div>
         <% if (session.user) { %>
             <span class="mr-10">Wecome,<%= session.user.fullname %></span>
-            <a type="button" class="btn btn-primary" href="logout">Logout</a>
+            <a type="button" class="btn btn-primary" href="/logout">Logout</a>
             <% } else { %>
-                <a class="d-flex nav-link active" aria-current="page" href="login">Đăng nhập</a>
+                <a class="d-flex nav-link active" aria-current="page" href="/login">Đăng nhập</a>
                 <% } %>
     </div>
 </nav>

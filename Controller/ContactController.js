@@ -3,7 +3,6 @@ const contactPage = (req, res) => {
         {
             title: 'Contact Website',
             page: 'contact',
-            session: req.session
         }
     )
 }
