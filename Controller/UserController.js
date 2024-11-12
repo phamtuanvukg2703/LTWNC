@@ -1,8 +1,9 @@
 import UserModel from "../Model/UserModel";
-
+import User from "../Model/SequelizeUserModel";
 
 const getAllUser = async (req, res) => {
-    var userList = await UserModel.getAllUser()
+    // var userList = await UserModel.getAllUser()
+    var userLisst = await User.findAll()
     res.render('home',
         {
             title: 'List User',
