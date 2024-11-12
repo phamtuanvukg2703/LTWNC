@@ -8,6 +8,7 @@ import viewEngine from "./viewEngine";
 import initWebRoute from "./router/webRouter";
 import bodyParser from "body-parser";
 import session from "express-session";
+import initAPIRoute from "./router/apiRouter";
 
 const app = express();
 app.use(session({
@@ -26,6 +27,9 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 viewEngine(app);
 app.use(express.static(path.join(__dirname, 'public')))
+
+initAPIRoute(app)
+
 initWebRoute(app)
 
 
