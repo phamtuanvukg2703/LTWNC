@@ -2,9 +2,16 @@ import UserModel from "../Model/UserModel";
 
 const getAllUser = async (req, res) => {
     let users = await UserModel.getAllUser()
-    return res.status(200).json({
+    res.status(200).json({
         users: users
     })
+    res.render('home',
+        {
+            title: 'List Nhom',
+            page: 'listUser',
+            rows: userList,
+        }
+    )
 }
 const detailUser = async (req, res) => {
     let user = req.params.user
@@ -12,5 +19,6 @@ const detailUser = async (req, res) => {
     return res.status(200).json({
         detailUsser
     })
+
 }
 export default { getAllUser, detailUser }
