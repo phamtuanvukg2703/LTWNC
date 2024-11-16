@@ -1,9 +1,9 @@
 import Nhom from "../Model/NhomModel";
 
 const getAllNhom = async (req, res) => {
-    let nhoms = await Nhom.findAll()
+    let nhom = await Nhom.findAll()
     return res.status(200).json({
-        Nhom: nhoms
+        Nhom: nhom
     })
 }
 export default { getAllNhom }

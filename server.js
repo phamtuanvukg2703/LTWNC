@@ -9,8 +9,12 @@ import initWebRoute from "./router/webRouter";
 import bodyParser from "body-parser";
 import session from "express-session";
 import initAPIRoute from "./router/apiRouter";
+import cors from 'cors'
 
 const app = express();
+
+app.use(cors());
+
 app.use(session({
     secret: 'keyboard Cat',
     resave: false,
